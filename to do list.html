@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+            color: #000;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin-left: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px auto;
+            padding: 10px;
+            width: 320px;
+            border-radius: 8px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>Todo List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button onclick="addTask()">Add</button>
+
+    <ul id="tl"></ul>
+
+    <script>
+        function addTask() {
+            let input = document.getElementById("taskInput");
+            let ttext = input.value;
+
+            if (ttext === "") {
+                alert("Please enter a task to be added");
+                return;
+            }
+
+            let li = document.createElement("li");
+
+            let span = document.createElement("span");
+            span.textContent = ttext;
+
+            span.onclick = function () {
+                li.classList.toggle("completed");
+            };
+
+            let delbtn = document.createElement("button");
+            delbtn.textContent = "Delete";
+            delbtn.style.backgroundColor = "#e74c3c";
+
+            delbtn.onclick = function () {
+                li.remove();
+            };
+
+            li.appendChild(span);
+            li.appendChild(delbtn);
+
+            document.getElementById("tl").appendChild(li);
+
+            input.value = "";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <title>RPS</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+            background: #f0f4f8;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .rock {
+            background-color: #3498db;
+        }
+
+        .paper {
+            background-color: #2ecc71;
+        }
+
+        .scissors {
+            background-color: #9b59b6;
+        }
+
+        button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>Rock Paper Scissors</h2>
+
+    <button class="rock" onclick="play('Rock')">Rock</button>
+    <button class="paper" onclick="play('Paper')">Paper</button>
+    <button class="scissors" onclick="play('Scissors')">Scissors</button>
+
+    <h4 id="result"></h4>
+
+    <script>
+    function play(user){
+        const choices = ["Rock", "Paper", "Scissors"];
+        const cmp = choices[Math.floor(Math.random() * 3)];
+
+        if(user === cmp){
+            document.getElementById("result").innerHTML = "Draw ";
+        }
+        else if(
+            (user === "Rock" && cmp === "Scissors") ||
+            (user === "Paper" && cmp === "Rock") ||
+            (user === "Scissors" && cmp === "Paper")
+        ){
+            document.getElementById("result").innerHTML = "You Win";
+        }
+        else{
+            document.getElementById("result").innerHTML = "You Lose";
+        }
+    }
+    </script>
+</body>
+</html>
